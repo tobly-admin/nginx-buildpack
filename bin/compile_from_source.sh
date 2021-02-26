@@ -5,7 +5,7 @@
 # otherwise it defaults to the ones marked here.
 
 
-NGINX_VERSION=${NGINX_VERSION-1.13.0}
+NGINX_VERSION=${NGINX_VERSION-1.15.10}
 PCRE_VERSION=${PCRE_VERSION-8.40}
 HEADERS_MORE_VERSION=${HEADERS_MORE_VERSION-0.32}
 
@@ -35,7 +35,7 @@ echo "Downloading $headers_more_nginx_module_url"
 (
 	cd nginx-${NGINX_VERSION}
 	./configure \
-    -Wno-error \
+		--with-cc-opt="-Wno-error" \
 		--with-pcre=pcre-${PCRE_VERSION} \
 		--prefix=/tmp/nginx \
 		--add-module=/${temp_dir}/nginx-${NGINX_VERSION}/headers-more-nginx-module-${HEADERS_MORE_VERSION} \
